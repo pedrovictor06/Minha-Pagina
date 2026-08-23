@@ -1,12 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Nossa pagina</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossa Página</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffc3a0);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      color: #4a2c2a;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      padding: 50px 40px;
+      max-width: 560px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #d1476b;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      color: #5c3a3a;
+    }
+
+    .song-link {
+      display: inline-block;
+      background: #d1476b;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.2s ease;
+      margin-bottom: 30px;
+    }
+
+    .song-link:hover {
+      background: #b8395a;
+      transform: scale(1.05);
+    }
+
+    .promises {
+      text-align: left;
+      background: #fff5f6;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-top: 10px;
+    }
+
+    .promises h2 {
+      font-size: 1.1rem;
+      color: #d1476b;
+      margin-bottom: 12px;
+    }
+
+    .promises ul {
+      list-style: none;
+    }
+
+    .promises li {
+      margin-bottom: 8px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .promises li::before {
+      content: "❤";
+      position: absolute;
+      left: 0;
+      color: #d1476b;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: #8a6a6a;
+    }
+
+    /* corações flutuando no fundo */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      color: rgba(209, 71, 107, 0.5);
+      animation: floatUp linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-  <body>
-    <h1>TE AMO PANQUEQUINHA</h1>
-    <p>To aprendendo ainda mas prometo fazer uma pagina linda para voce, postar os seus trabalhos.</p>
-    <a href="https://www.youtube.com/watch?v=3JiMr-HgHJ8">Essa e a nossa musica</a>
-  </body>
+<body>
+
+  <div class="card">
+    <h1>TE AMO, PANQUEQUINHA 💗</h1>
+    <p>
+      Essa página ainda tá começando, assim como meus estudos, mas prometo
+      fazer ela ficar cada vez mais linda pra você. Em breve vou postar aqui
+      seus trabalhos, nossas fotos e tudo que a gente for construindo juntos.
+    </p>
+
+    <a class="song-link" href="https://www.youtube.com/watch?v=3JiMr-HgHJ8" target="_blank">
+      🎵 Essa é a nossa música
+    </a>
+
+    <div class="promises">
+      <h2>Promessas dessa página:</h2>
+      <ul>
+        <li>Vai ter fotos nossas em breve</li>
+        <li>Vai ter espaço pros seus trabalhos</li>
+        <li>Vai ficando mais bonita a cada commit</li>
+        <li>Feita com carinho enquanto estudo</li>
+      </ul>
+    </div>
+
+    <footer>
+      feito por Pedro, com muito ❤ e um pouco de código
+    </footer>
+  </div>
+
+  <script>
+    // gera corações flutuando aleatoriamente
+    const emojis = ['💗', '❤', '💕', '💖'];
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+      heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 12000);
+    }
+    setInterval(createHeart, 800);
+  </script>
+
+</body>
 </html>
